@@ -1,8 +1,8 @@
 // src/pages/Login.jsx
 import React, { useState } from 'react';
-import { useNavigate }      from 'react-router-dom';
-import { login }          from '../context/AuthContext';
-import { API_URL }          from '../config';
+import { useNavigate, Link } from 'react-router-dom';
+import { login }             from '../context/AuthContext';
+import { API_URL }           from '../config';
 import './Login.css';
 
 export default function Login() {
@@ -33,7 +33,7 @@ export default function Login() {
 
       const userData = await res.json();
       login(userData);
-      navigate('/');
+      navigate('/', { replace: true });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -69,9 +69,13 @@ export default function Login() {
           />
         </label>
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" className="btn btn-primary" disabled={loading}>
           {loading ? 'Signing in…' : 'Log In'}
         </button>
+
+        <p className="login-footer">
+          No account? <Link to="/register">Register</Link>
+        </p>
       </form>
     </div>
   );

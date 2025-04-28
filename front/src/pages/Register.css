@@ -1,73 +1,76 @@
 .register-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 80px);
-  background-color: #f5f8fa;
+  min-height: calc(100vh - var(--navbar-h));
+  background: var(--color-bg);
+  padding: var(--gap);
 }
 
 .register-form {
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 360px;
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px;
+  padding: var(--gap);
   display: flex;
   flex-direction: column;
+  gap: var(--gap);
 }
 
 .register-form h2 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #14171a;
+  color: var(--color-text);
+  margin-bottom: var(--gap);
+}
+
+.form-error {
+  background: #ffe6e6;
+  color: var(--color-danger);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  text-align: center;
 }
 
 .register-form label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
-  color: #14171a;
-  font-weight: bold;
+  font-weight: 500;
+  color: var(--color-text);
 }
 
 .register-form input {
-  padding: 10px;
-  border: 1px solid #e6ecf0;
-  border-radius: 8px;
-  margin-top: 5px;
-  font-size: 16px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border-color 0.2s;
 }
 
 .register-form input:focus {
+  border-color: var(--color-primary);
   outline: none;
-  border-color: #1da1f2;
-  box-shadow: 0 0 0 2px rgba(29, 161, 242, 0.2);
 }
 
 .register-form button {
-  background-color: #1da1f2;
-  color: white;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1rem;
   border: none;
-  border-radius: 25px;
+  border-radius: var(--radius);
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  margin-top: 10px;
+  transition: background-color 0.2s, opacity 0.2s;
 }
 
-.register-form button:hover {
-  background-color: #0c85d0;
+.register-form button:hover:not([disabled]) {
+  background: #1f4fc1;
 }
 
-.register-form .form-error {
-  color: #e53e3e;
-  margin-bottom: 15px;
-  padding: 10px;
-  background-color: #fed7d7;
-  border-radius: 8px;
-  border: 1px solid #fecaca;
+.register-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

@@ -1,8 +1,5 @@
-.postlist-container {
-  margin-top: 20px;
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
 }
-
-.postlist-container .space-y-4 > .post-container{
-  margin-bottom: 20px;
-}
-

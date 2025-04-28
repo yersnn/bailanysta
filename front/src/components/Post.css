@@ -1,27 +1,31 @@
-.post-container {
-  border: 1px solid #e6ecf0;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 8px; /* Slightly more rounded corners */
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+.post-card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: var(--gap);
+  margin: var(--gap) 0;
 }
 
-.post-container h3 {
-  font-size: 18px;
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.post-author {
   font-weight: bold;
-  color: #14171a; /* Darker heading color */
-  margin-bottom: 5px;
+  color: var(--color-primary);
 }
 
-.post-container p {
-  color: #14171a; /* Darker text color */
-  line-height: 1.5;  /* Improved line height for readability */
+.post-time {
+  font-size: 0.85rem;
+  color: var(--color-subtle);
 }
 
-.post-container small {
-  color: #657786; /* Lighter color for timestamp */
-  display: block;  /* Ensure it takes full width */
-  margin-top: 10px;
-  font-size: 12px;
+.post-content {
+  font-size: 1rem;
+  color: var(--color-text);
+  white-space: pre-wrap;
 }
+

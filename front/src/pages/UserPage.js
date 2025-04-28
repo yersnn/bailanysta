@@ -17,7 +17,7 @@ export default function UserPage() {
   }, [userId]);
 
   return (
-    <div>
+    <div className="user-page-container">
       <UserInfo user={user} />
       <PostList userId={userId} />
     </div>

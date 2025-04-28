@@ -1,45 +1,40 @@
+/* src/components/Navbar.css */
 .navbar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: var(--navbar-h);
+  background: var(--color-primary);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
-  background-color: white; /* White background for navbar */
-  border-bottom: 1px solid #e6ecf0; /* Subtle border */
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
-
-.navbar h1 {
-  color: #1da1f2; /* Twitter's blue color */
-  font-size: 24px;      /* Increased font size */
+.navbar-brand {
+  color: #fff;
+  font-size: 1.25rem;
   font-weight: bold;
 }
-
-.navbar div {
+.nav-links {
   display: flex;
   align-items: center;
+  gap: var(--gap);
 }
-
-.navbar a {
-  color: #1da1f2;
+.nav-link {
+  color: #fff;
+  font-weight: 500;
   text-decoration: none;
-  margin-right: 15px;
-  font-size: 16px;    /* Increased font size */
+}
+.nav-link:hover {
+  text-decoration: underline;
 }
 
-.navbar a:hover {
-  color: #0c85d0; /* Darker blue on hover */
+.theme-toggle {
+  background: var(--color-accent);
+  color: #fff;
 }
-
-.navbar button {
-  background-color: #1da1f2;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px; /* Fully rounded corners */
-  cursor: pointer;
-  font-size: 16px;  /* Increased font size */
-  transition: background-color 0.3s ease; /* Smooth transition */
-}
-
-.navbar button:hover {
-  background-color: #0c85d0;
+.theme-toggle:hover {
+  opacity: 0.9;
 }

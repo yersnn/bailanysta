@@ -1,8 +1,8 @@
 // src/pages/Register.jsx
 import React, { useState } from 'react';
-import { useNavigate }      from 'react-router-dom';
-import { login }          from '../context/AuthContext';
-import { API_URL }          from '../config';
+import { useNavigate } from 'react-router-dom';
+import { login }       from '../context/AuthContext';
+import { API_URL }     from '../config';
 import './Register.css';
 
 export default function Register() {
@@ -24,21 +24,24 @@ export default function Register() {
     setLoading(true);
     try {
       const res = await fetch(`${API_URL}/register`, {
-        method: 'POST',
-        headers:  { 'Content-Type': 'application/json' },
-        body:     JSON.stringify({ username, password }),
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ username, password }),
       });
 
       if (res.status === 409) {
         throw new Error('Username already taken');
       }
+      if (res.status >= 500) {
+        throw new Error('Server error, please try again later');
+      }
       if (!res.ok) {
-        throw new Error('Unexpected server error');
+        throw new Error('Unexpected error');
       }
 
       const userData = await res.json();
-      login(userData.username);
-      navigate('/');
+      login(userData);         // store full user object
+      navigate('/', { replace: true });
     } catch (err) {
       setError(err.message);
     } finally {
@@ -85,7 +88,7 @@ export default function Register() {
           />
         </label>
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" className="btn btn-primary" disabled={loading}>
           {loading ? 'Creating…' : 'Sign Up'}
         </button>
       </form>

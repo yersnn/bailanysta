@@ -1,12 +1,14 @@
 import React from 'react';
-import './Post.css'
+import './Post.css';
 
 export default function Post({ post }) {
   return (
-    <div className="border p-4 rounded">
-      <h3 className="font-bold">{post.author.username}</h3>
-      <p>{post.content}</p>
-      <small>{new Date(post.created_at || post.createdAt).toLocaleString()}</small>
+    <div className="post-card">
+      <div className="post-header">
+        <span className="post-author">@{post.author.username}</span>
+        <span className="post-time">{new Date(post.created_at || post.createdAt).toLocaleString()}</span>
+      </div>
+      <div className="post-content">{post.content}</div>
     </div>
   );
 }

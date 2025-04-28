@@ -1,12 +1,31 @@
-.userinfo-container {
-  margin-bottom: 20px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #e6ecf0;
+.user-info-card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: var(--gap);
+  margin: var(--gap) auto;
+  width: 100%;
+  max-width: 800px;
 }
 
-.userinfo-container h2 {
-  font-size: 24px;
+.user-info-header {
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #14171a;
-  margin-bottom: 10px;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.user-info-username {
+  color: var(--color-subtle);
+  margin-bottom: 0.75rem;
+}
+
+.user-info-bio {
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.loading {
+  text-align: center;
+  color: var(--color-subtle);
 }

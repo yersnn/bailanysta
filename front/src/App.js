@@ -6,18 +6,20 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import './App.css';
+import { isLoggedIn } from './context/AuthContext';
 
 export default function App() {
   return (
     <Router>
       <div className="app-container">
-        <Navbar />
+        {isLoggedIn() && <Navbar />}
+
         <main className="app-main">
           <div className="app-content">
             <Routes>
               <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/" element={<Home />} />
+              <Route path="/login"    element={<Login />} />
+              <Route path="/"         element={<Home />} />
               <Route path="/user/:userId" element={<UserPage />} />
             </Routes>
           </div>

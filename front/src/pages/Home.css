@@ -1,5 +1,12 @@
 .home-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center content in the home page */
+  gap: var(--gap);
+  align-items: center;
+  padding: var(--gap) 0;
+}
+
+.home-container > * {
+  width: 100%;
+  max-width: 800px;
 }
