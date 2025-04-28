@@ -1,0 +1,1 @@
+export const API_URL = "https://fast-api-18le.onrender.com";

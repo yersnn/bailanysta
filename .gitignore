@@ -1,0 +1,9 @@
+front/node_modules/
+front/.env
+front/build/
+front/.DS_Store
+
+back/test.db
+back/__pycache__/
+back/.env
+back/venv/

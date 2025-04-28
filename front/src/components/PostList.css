@@ -1,0 +1,8 @@
+.postlist-container {
+  margin-top: 20px;
+}
+
+.postlist-container .space-y-4 > .post-container{
+  margin-bottom: 20px;
+}
+

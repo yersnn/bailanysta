@@ -1,0 +1,45 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white; /* White background for navbar */
+  border-bottom: 1px solid #e6ecf0; /* Subtle border */
+}
+
+.navbar h1 {
+  color: #1da1f2; /* Twitter's blue color */
+  font-size: 24px;      /* Increased font size */
+  font-weight: bold;
+}
+
+.navbar div {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  color: #1da1f2;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 16px;    /* Increased font size */
+}
+
+.navbar a:hover {
+  color: #0c85d0; /* Darker blue on hover */
+}
+
+.navbar button {
+  background-color: #1da1f2;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px; /* Fully rounded corners */
+  cursor: pointer;
+  font-size: 16px;  /* Increased font size */
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.navbar button:hover {
+  background-color: #0c85d0;
+}
