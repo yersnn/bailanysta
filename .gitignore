@@ -6,4 +6,4 @@ front/.DS_Store
 back/test.db
 back/app/__pycache__/
 back/.env
-back/venv/
+back/venv/**/.DS_Store
