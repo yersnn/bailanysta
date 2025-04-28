@@ -12,7 +12,7 @@ export default function App() {
   return (
     <Router>
       <div className="app-container">
-        {isLoggedIn() && <Navbar />}
+        { <Navbar />}
 
         <main className="app-main">
           <div className="app-content">

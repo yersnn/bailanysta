@@ -1,3 +1,4 @@
+/* src/components/Post.css */
 .post-card {
   background: var(--color-card);
   border-radius: var(--radius);
@@ -29,3 +30,33 @@
   white-space: pre-wrap;
 }
 
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--gap);
+}
+
+.like-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+}
+
+.like-button:hover:not([disabled]) {
+  opacity: 0.8;
+}
+
+.like-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.like-count {
+  font-weight: 500;
+  color: var(--color-text);
+}
