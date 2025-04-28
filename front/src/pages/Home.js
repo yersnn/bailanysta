@@ -13,8 +13,8 @@ export default function Home() {
   }
 
   return (
-    <div>
-      <CreatePost
+    <div className="home-container">
+    <CreatePost
         onPostCreated={() => setRefreshFlag(f => f + 1)}
       />
       <PostList refreshFlag={refreshFlag} />

@@ -1,40 +1,94 @@
-.createpost-form {
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.createpost-form textarea {
+/* src/components/CreatePost.css */
+.create-post-form {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
   width: 100%;
-  padding: 10px;
-  border: 1px solid #e6ecf0;
-  border-radius: 8px;
-  resize: none;
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.createpost-form textarea:focus {
+.create-post-form textarea {
+  background: var(--color-card);
+  color: var(--color-text);
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem;
+  border: 1px solid var(--color-subtle);
+  border-radius: var(--radius);
+  resize: vertical;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.create-post-form textarea::placeholder {
+  color: var(--color-subtle);
+}
+
+.create-post-form textarea:focus {
+  border-color: var(--color-primary);
   outline: none;
-  border-color: #1da1f2; /* Highlight border on focus */
-  box-shadow: 0 0 0 2px rgba(29, 161, 242, 0.2); /* Add a subtle shadow */
+  background: var(--color-card);
 }
 
-
-.createpost-form button {
-  background-color: #1da1f2;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+.create-post-form button {
+  align-self: flex-end;
 }
 
-.createpost-form button:hover {
-  background-color: #0c85d0;
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gap);
+  z-index: 2000;
+}
+
+.modal-content {
+  background: var(--color-card);
+  padding: var(--gap);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  margin: auto;
+}
+
+.modal-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  border: 1px solid var(--color-subtle);
+  border-radius: var(--radius);
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.modal-textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--gap);
+}
+
+.btn-secondary {
+  background: var(--color-subtle);
+  color: #fff;
+}
+
+.btn-secondary:hover:not([disabled]) {
+  opacity: 0.9;
 }

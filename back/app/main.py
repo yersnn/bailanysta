@@ -4,8 +4,10 @@ from sqlalchemy.orm import Session
 from . import crud, models, schemas
 from .database import SessionLocal, engine
 from fastapi.middleware.cors import CORSMiddleware
+from huggingface_hub import InferenceClient
 from pydantic import BaseModel
-from openai import OpenAI
+import os
+
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -47,21 +49,42 @@ def create_user_post(user_id: int, post: schemas.PostCreate, db: Session = Depen
 def read_posts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_posts(db, skip, limit)
 
-client = OpenAI(api_key="your api key here")
+
+
+
 class ChatRequest(BaseModel):
-    prompt: str
+    text: str
+class ChatResponse(BaseModel):
+    text: str
 
-@app.post("/chat/")
-async def chat_with_gpt(request: ChatRequest):
-    return {"reply": "This is a placeholder response."}
-    # Replace with your actual OpenAI API call
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+HF_API_TOKEN = os.getenv("HF_API_TOKEN")
+if not HF_API_TOKEN:
+    raise RuntimeError("Please set the HF_API_TOKEN environment variable")
+
+client = InferenceClient(
+    provider="hyperbolic",
+    api_key=HF_API_TOKEN,
+)
+
+@app.post("/chat/", response_model=ChatResponse)
+def chat(request: ChatRequest):
+    completion = client.chat.completions.create(
+        model="deepseek-ai/DeepSeek-V3-0324",
         messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": request.prompt}
-        ]
+            {
+                "role": "user",
+                "content": request.text
+            }
+        ],
+        max_tokens=512,
     )
-    reply = response.choices[0].message.content
-    return {"reply": reply}
 
+    return ChatResponse(text=completion.choices[0].message['content'])
+
+@app.post("/posts/{post_id}/like", response_model=schemas.Post)
+def like_post_endpoint(
+    user_id: int,
+    post_id: int,
+    db: Session = Depends(get_db),
+):
+    return crud.like_post(db, user_id, post_id)

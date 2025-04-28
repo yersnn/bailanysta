@@ -1,13 +1,14 @@
+// src/components/PostList.jsx
 import React, { useEffect, useState } from 'react';
 import Post from './Post';
 import { API_URL } from '../config';
-import './PostList.css'
+import './PostList.css';
 
 export default function PostList({ userId, refreshFlag }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    async function fetchPosts() {
       try {
         let data;
         if (userId) {
@@ -24,13 +25,12 @@ export default function PostList({ userId, refreshFlag }) {
       } catch (err) {
         console.error('Failed to load posts:', err);
       }
-    };
-
+    }
     fetchPosts();
   }, [userId, refreshFlag]);
 
   return (
-    <div className="space-y-4">
+    <div className="post-list">
       {posts.map(post => (
         <Post key={post.id} post={post} />
       ))}

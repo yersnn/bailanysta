@@ -1,19 +1,181 @@
-.app-container {
+/* src/App.css */
+
+/* 1) Theme variables */
+:root {
+  --color-bg:     #f5f7fa;
+  --color-card:   #ffffff;
+  --color-primary:#3467eb;
+  --color-accent: #ff9f1c;
+  --color-danger: #e63946;
+  --color-text:   #333333;
+  --color-subtle: #6c757d;
+  --font-family:  'Segoe UI', Tahoma, sans-serif;
+  --radius:       8px;
+  --gap:          1rem;
+  --navbar-h:     60px;
+}
+
+/* 2) Reset & base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  line-height: 1.5;
+  padding-top: var(--navbar-h);
+}
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* 3) Layout helpers */
+.app-container { display: flex; flex-direction: column; min-height: 100vh; }
+.app-main      { flex: 1; padding: calc(var(--gap) * 2) var(--gap); }
+.app-content   { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap); }
+
+/* 4) Cards (used for posts, user info, etc.) */
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: var(--gap);
+}
+
+/* 5) Forms */
+.form-container {
+  background: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: var(--gap);
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* More modern font */
-  background-color: #f5f8fa; /* Light background, similar to Twitter */
+  gap: var(--gap);
 }
-
-.app-main {
-  flex: 1;
+.form-container label {
   display: flex;
-  justify-content: center;
-  padding: 20px;
+  flex-direction: column;
+  font-weight: 500;
+  color: var(--color-text);
+}
+.form-container input,
+.form-container textarea {
+  margin-top: 0.25rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+.form-container input:focus,
+.form-container textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+.form-error {
+  background: #ffe6e6;
+  color: var(--color-danger);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  text-align: center;
 }
 
-.app-content {
+/* 6) Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover { background: #1f4fc1; }
+.btn-danger {
+  background: var(--color-danger);
+  color: #fff;
+}
+.btn-danger:hover { background: #b82c3a; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* 7) Utility */
+.flex    { display: flex; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.mt-2    { margin-top: 0.5rem; }
+.mb-4    { margin-bottom: 1rem; }
+.w-full  { width: 100%; }
+
+/* 8) Navbar override (if you use .navbar) */
+.navbar {
+  position: fixed;
+  top: 0; left: 0;
   width: 100%;
-  max-width: 1200px; /* Increased max-width for larger screens */
+  height: var(--navbar-h);
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+.navbar h1 { font-size: 1.25rem; }
+.nav-links a,
+.nav-links button {
+  margin-left: 1rem;
+  color: #fff;
+}
+
+/* 9) Post list spacing (override Tailwind `.space-y-4`) */
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+/* Dark-mode variable overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:      #121212;
+    --color-card:    #1e1e1e;
+    --color-primary: #2c2c2e;    /* ← navbar (and other primaries) switch here */
+    --color-accent:  #ffa94d;
+    --color-danger:  #ff6b6b;
+    --color-text:    #ececec;
+    --color-subtle:  #a0a0a0;
+  }
+}
+/* Manual override via classes on <html> */
+:root.light-mode {
+  /* explicitly re-apply light theme if you want */
+  --color-bg:      #f5f7fa;
+  --color-card:    #ffffff;
+  --color-primary: #3467eb;
+  --color-accent:  #ff9f1c;
+  --color-danger:  #e63946;
+  --color-text:    #333333;
+  --color-subtle:  #6c757d;
+}
+
+:root.dark-mode {
+  /* match your dark-mode palette */
+  --color-bg:      #121212;
+  --color-card:    #1e1e1e;
+  --color-primary: #2c2c2e;
+  --color-accent:  #ffa94d;
+  --color-danger:  #ff6b6b;
+  --color-text:    #ececec;
+  --color-subtle:  #a0a0a0;
 }
